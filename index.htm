@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lei's Homepage</title>
+<style>
+:root {
+--primary-color: #2c3e50;
+--secondary-color: #3498db;
+--nav-color: #3498db; /* Using the secondary color for navigation */
+--text-color: #333;
+--light-gray: #f5f5f5;
+--border-color: #e0e0e0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+body {
+    color: var(--text-color);
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* Navigation Bar */
+nav {
+    background-color: var(--nav-color);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start; /* Left-aligned navigation */
+    padding-left: 20px;
+}
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+.nav-item {
+    padding: 0;
+}
+.nav-link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    transition: background-color 0.3s;
+}
+.nav-link:hover {
+    background-color: rgba(63,75,146,0.20);
+}
+header {
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--secondary-color);
+}
+.profile-info {
+    flex: 1;
+    padding: 0 30px;
+    text-align: center;
+}
+
+  /* ------------------------------------- */
+  /* ***** 新增或修改图标样式 ***** */
+  /* 移除原有的 Unicode 样式，保留对应的引用名或删除 */
+  .corresponding-author-icon {
+    /* 原有 Unicode 样式已移除或被下面的图片样式覆盖 */
+    display: none; /* 隐藏原有的 span，确保不显示 Unicode 字符 */
+  }
+
+  .corresponding-author-image {
+    /* 新的图片图标样式 */
+    height: 0.7em; /* 控制图标高度，与文字匹配 */
+    width: auto;
+    vertical-align: super; /* 尝试使其具有上标效果 */
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    position: relative;
+    top: 0em; /* 进一步向上调整位置 */
+  }
+  /* ------------------------------------- */
+  
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.logo {
+    height: 60px;
+    width: auto;
+}
+.title {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+.contact-info {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.contact-info a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s;
+}
+.contact-info a:hover {
+    color: var(--secondary-color);
+}
+section {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+section:last-child {
+    border-bottom: none;
+}
+h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--secondary-color);
+    display: inline-block;
+}
+/* Content alignment - left aligned with headings */
+.section-content {
+    padding-left: 0; /* Aligns with heading */
+}
+.bio {
+    text-align: left;
+}
+.research-interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+.research-tag {
+    background-color: var(--light-gray);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+.publications-list, .education-list, .projects-list, .news-list {
+    margin-top: 20px;
+}
+.publication-item, .education-item, .project-item, .news-item {
+    margin-bottom: 25px;
+}
+.publication-title, .project-title, .news-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+.publication-authors {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+.publication-journal, .publication-year, .education-year, .project-description, .news-date {
+    color: #666;
+}
+.publication-link, .project-link, .news-link {
+    display: inline-block;
+    margin-top: 5px;
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+.publication-link:hover, .project-link:hover, .news-link:hover {
+    text-decoration: underline;
+}
+.education-institution {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.education-degree {
+    margin-bottom: 5px;
+}
+footer {
+    text-align: center;
+    padding: 30px 0;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+.profile-container {
+    flex-direction: column;
+    gap: 30px;
+}
+.profile-info {
+    order: 2;
+    padding: 0;
+}
+.logo-container {
+    order: 3;
+    flex-direction: row;
+    margin-top: 20px;
+}
+}
+
+@media (max-width: 600px) {
+.nav-container {
+    justify-content: center;
+    padding-left: 0;
+}
+.nav-link {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+}
+}
+        li {
+  margin: 10px 0; /* 上下间距10px，左右间距0 */
+}
+    .outer-border {
+    border: 3px solid #e7ecef;     /* 你可换成其它颜色和粗细 */
+    border-radius: 12px;           /* 圆角可选 */
+    padding: 18px;                 /* 内边距防止内容贴边 */
+    max-width: 1260px;             /* 1200px+2*padding+2*border，防止溢出 */
+    margin: 18px auto 18px auto;   /* 上下左右外边距，居中 */
+    background: #fff;              /* 防止body背景色影响边框外观 */
+    box-sizing: border-box;
+    box-shadow: 0 2px 12px 0 rgba(50,156,235,0.06); /* 可选，增加立体感 */
+}
+          .justified-text {
+            text-align: justify;
+            width: 100%;  /* 需要指定宽度 */
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+@media (max-width: 600px) {
+  body {
+    padding: 0 5px;
+  }
+  .outer-border {
+    padding: 6px;
+    max-width: 100%;
+  }
+  .justified-text {
+    width: auto;
+    max-width: 100%;
+    padding: 6px;
+    font-size: 0.95rem;
+  }
+  .profile-container {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+  .logo-container img {
+    height: 40px;
+    width: auto;
+  }
+  /* 移除原有的对应小屏幕样式，改用图片样式 */
+  .corresponding-author-icon {
+      display: none; 
+  }
+  .corresponding-author-image {
+    height: 0.8em; /* 针对手机屏幕调整大小 */
+    top: -0.1em;
+  }
+}
+
+/* 针对中等屏幕（平板电脑）的样式调整 */
+/* 例如：宽度大于 600px 且小于等于 1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .corresponding-author-icon {
+        display: none; 
+    }
+    .corresponding-author-image {
+        height: 0.9em; /* 在平板电脑上将其缩小 */
+        top: -0.15em;
+    }
+}
+</style>
+</head>
+<body>
+<div class="outer-border">
+<nav>
+  <div class="nav-container">
+    <ul class="nav-list">
+     <li class="nav-item"><a href="#news" class="nav-link">News</a></li>
+      <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+    <li class="nav-item"><a href="#education" class="nav-link">Research Interests</a></li>
+      <li class="nav-item"><a href="#publications" class="nav-link">Publications</a></li>
+      <li class="nav-item"><a href="#teaching" class="nav-link">Teaching</a></li>
+       <li class="nav-item"><a href="#graduate" class="nav-link">毕业生去向</a></li>
+    <li class="nav-item"><a href="https://cs.seu.edu.cn/qilei/main.htm" class="nav-link">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<header>
+  <div class="profile-container"> <img src="./lei_qi_files/qilei_photo.png" alt="Profile Photo" class="profile-image">
+    <div class="profile-info">
+      <h1>Lei Qi （祁磊）</h1>
+      <p class="title">Associate Professor&nbsp; &nbsp;</p>
+      <p class="title"><a href="https://palm.seu.edu.cn/" style="text-decoration: none; color:  #329CEB;">PAttern Learning and Mining (PALM) Lab&nbsp;</a></p>
+<p class="title"><a href="https://www.seu.edu.cn/" style="text-decoration: none; color:  #329CEB;">Southeast University</a></p>
+<div class="contact-info"> <a style="color: #329CEB;"><strong>Email</strong>: qilei[at]seu.edu.cn</a> <a href="https://scholar.google.com/citations?user=7mm8iZwAAAAJ&hl=zh-CN" style="color: #329CEB;">GoogleScholar</a>  </div>   
+    </div>
+    <div class="logo-container"> 
+        <a href="https://www.seu.edu.cn/"><img src="lei_qi_files/seu.jpg" alt="" width="103px" height="103px" /></a>
+        <td><a href="http://palm.seu.edu.cn/"><img src="./lei_qi_files/palm.png" alt="" width="123px" height="113px" /></a></td>
+      </div>
+  </div>
+</header>
+<main>
+ <section id="news">
+    <h2>News</h2>
+    <div class="section-content">
+         <div class="justified-text">
+     <ul style="padding-left: 20px; margin-top: 10px;">
+      <!--<li> <b> <font color="#FF0000">[2021.01]</font> </b> One paper is accepted by MedIA.</li> -->
+<!--<li> <b>[2024.7.27]</b><b> <font color="#FF0000">目前还有东蒙联合研究生院推荐名额.</font> </b> </li>-->
+<li style="margin-bottom: 12px; line-height: 1.6;">
+  <div style="display: flex; align-items: flex-start; gap: 0.5em;">
+    <!-- 日期 -->
+    <b>[2026.05]</b>
+    
+    <!-- 正文 + PS -->
+    <div>
+      <b style="color: #FF0000;">
+        招收2027级保研的同学。要求：1）较好的代码能力；2）较好的自我驱动能力；3）具有人工智能领域科研基础。
+      </b>
+      <div style="color: blue; margin-top: 6px;">
+        PS: 如果我觉得符合基本要求，会在三日内回复邮件。
+      </div>
+    </div>
+  </div>
+</li>
+<!--<li> <b>[2026.03]</b><b> <font color="#FF0000">招收2026年计算机学院、软件学院和东蒙联合研究生院<font color="blue">考研</font>的同学。要求：1）较好的代码能力；2）较好的自我驱动能力。</font> </b> </li>-->
+<!--<li> <b>[2023.7]</b> <font color="red"> 2023年夏令营推荐名额已满.</font></li>-->
+<li> <b>[2020.10]</b> My homepage is launched.</li>
+</ul>
+ </div>
+    </div>
+      
+
+  </section>
+    
+    <section id="about">
+    <h2>About Me</h2>
+    <div class="section-content">
+      <div class="bio">
+          <div class="justified-text">
+        <p>I am an Associate Professor in the  <a href="https://cs.seu.edu.cn/" style="text-decoration: none; color:  #000000;"> School of Computer Science and Engineering</a> at Southeast University.  I was a Zhishan Postdoctoral Researcher working with Prof. <a href="https://palm.seu.edu.cn/xgeng/" style="text-decoration: none; color:  #329CEB;">Xin Geng</a> at Southeast University. I got my Ph. D. degree from Nanjing University in 2020, supervised by Prof. <a href="https://cs.nju.edu.cn/rl/members.htm" style="text-decoration: none; color:  #329CEB;">Yang Gao</a>. In 2011 and 2015, I obtained my bachelor degree and master degree (supervised by Prof. <a href="https://gsmis.njust.edu.cn/open/TutorInfo.aspx?dsbh=!kmQRgVWiulYe7d5RsrBAg==&yxsh=z70ppxVSQAs=&zydm=SwsWR9zpmmw=" style="text-decoration: none; color:  #329CEB;">Mingwu Ren</a>)&nbsp; from Nanjing Normal University and Nanjing University of Science and Technology. From August 2018 to August 2019, I was a visiting student at University of Wollongong, supervised by Prof. <a href="https://sites.google.com/view/lei-hs-wang" style="text-decoration: none; color:  #329CEB;">Lei Wang</a>.&nbsp;</p>
+      </div>
+    </div>
+    </div>
+  </section>
+    
+     <section id="education">
+    <h2>Research Interests</h2>
+    <div class="section-content">
+        <div class="justified-text">
+      <p> My research interests include Computer Vision (CV) and Pattern Recogintion (PR).</p>
+        <ul style="padding-left: 20px; margin-top: 10px;">
+       <li> Currently, I mainly focus on the CV topics including Person Re-identification, Anomaly Detection and Semantic Segmentation, etc.</li>
+        <li>For PR, I am interested in Domain Generalization (DG) and Vision-Language Model (VLM).</li>
+     </ul>
+     </div>
+    </div>
+  </section>
+  
+  <section id="publications">
+    <h2>Selected Publications</h2>
+    <div class="section-content">
+<p style="color: #14213d;"> *: Equal Contribution; <img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image" style="top: 0; position: static;"/>: Corresponding Author. </p>
+        <p>&nbsp;</p>
+        <div class="justified-text">
+<font size="3"> 
+        <ul style="padding-left: 20px; margin-top: 10px;">
+                 <li> Longhua Li, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Qi Tian, Xin Geng<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>. 
+        <a>Energy-Structured Low-Rank Adaptation for Continual Learning.</a>
+         International Conference on Machine Learning (<b>ICML</b>), 2026. 
+        <b><font color="#FF0000">[CCF-A会议/ML顶会] 第一作者为联合指导的博士生</font> </b>
+        </li>
+             <li> Xin Huang, Long Chen, Qian Yu<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>. 
+        <a>GTR: Global Token Retrieval for Window-Based Vision Transformer.</a>
+          IEEE Transactions on Cognitive and Developmental Systems (<b>IEEE TCDS</b>), 2026. 
+          <b><font color="#FF0000">[IEEE汇刊] 第一作者为指导的硕士生</font> </b>
+        </li>
+
+             <li> <b>Lei Qi</b>, Zeyu Shi, Peng Dong, Xin Geng. 
+        <a>Explore Diverse Information in Diffusion Model for Single-domain Generalized Object Detection.</a>
+         Pattern Recognition (<b>PR</b>), 2026. 
+         <b><font color="#FF0000">[CCF-B期刊/模式识别领域旗舰期刊]</font> </b>
+        </li>
+
+           <li> Longhua Li, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Qi Tian, Xin Geng<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>. 
+        <a>Model Merging in the Essential Subspace.</a>
+        IEEE Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>), 2026. 
+        <b><font color="#FF0000">[CCF-A会议/CV顶会] 第一作者为联合指导的博士生</font> </b>
+        </li>
+
+       <li> Xin Huang, Longhua Li, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Xin Geng. 
+        <a>Few-Shot Network Thinning: A Unified Dense Compression Framework for CNNs and ViTs.</a>
+         IEEE Transactions on Mobile Computing (<b>IEEE TMC</b>), 2026. <b><font color="#FF0000">[CCF-A期刊/IEEE汇刊] 第一作者为指导的硕士生</font> </b>
+        </li>
+
+    <li> Longhua Li, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Xin Geng<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>. 
+        <a>Stratified Knowledge-Density Super-Network for Scalable Vision Transformers.</a>
+         AAAI Conference on Artificial Intelligence (<b>AAAI</b>), 2026. 
+         <b><font color="#FF0000">[CCF-A会议] 第一作者为联合指导的博士生</font> </b>
+        </li>
+
+        <li> Longhua Li, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Xin Geng<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>. 
+        <a>One-Shot Knowledge Transfer for Scalable Person Re-Identification.</a>
+         IEEE International Conference on Computer Vision (<b>ICCV</b>), 2025. <b><font color="#FF0000">[CCF-A会议/CV顶会] 第一作者为联合指导的博士生</font> </b>
+        </li>
+            
+        <li> Xingyu Zhao, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yuexuan An, Xin Geng<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>. 
+        <a>Delving into Generalizable Label Distribution Learning. </a>
+         IEEE Transactions on Pattern Analysis and Machine Intelligence (<b>IEEE TPAMI</b>), 2025. <b><font color="#FF0000">[CCF-A期刊/IEEE汇刊] 第一作者为联合指导的博士生</font> </b>
+        </li>
+        
+         <li> Huazhong Zhao, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Xin Geng.
+            <a>CILP-FGDI: Exploiting Vision-Language Model for Generalizable Person Re-Identification. </a>
+        IEEE Transactions on Information Forensics and Security (<b>IEEE TIFS</b>), 2025.
+      <b><font color="#FF0000">[CCF-A期刊/IEEE汇刊] 第一作者为指导的硕士生</font> </b>
+        </li>
+
+         <li> Xiusheng Xu, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Jingyang Zhou, Xin Geng.
+             <a>BatStyler: Advancing Multi-category Style Generation for Source-free Domain Generalization. </a>
+            IEEE Transactions on Circuits and Systems for Video Technology (<b>IEEE TCSVT</b>), 2025.
+             <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊] 第一作者为指导的硕士生</font> </b>
+        </li>
+
+         <li> Chenghao Li, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Xin Geng.
+             <a>A SAM-guided Two-stream Lightweight Model for Anomaly Detection. </a>
+             ACM Transactions on Multimedia Computing Communications and Application (<b>ACM TOMM</b>), 2024. 
+           <b><font color="#FF0000">[CCF-B期刊/ACM汇刊] 第一作者为指导的硕士生</font> </b>
+        </li>
+
+         <li> Huazhong Zhao, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Xin Geng.
+             <a>CLIP-DFGS: A Hard Sample Mining Method for CLIP in Generalizable Person Re-Identification. </a>
+             ACM Transactions on Multimedia Computing Communications and Application (<b>ACM TOMM</b>), 2024. 
+             <b><font color="#FF0000">[CCF-B期刊/ACM汇刊] 第一作者为指导的硕士生</font> </b>
+        </li>
+
+        <li><span> Jintao Guo, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yinghuan Shi<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yang Gao. 
+            <a>START: A Generalized State Space Model with Saliency-Driven Token-Aware Transformation. </a>
+        Advances in Neural Information Processing Systems (<b>NeurIPS</b>), 2024. 
+           <b><font color="#FF0000">[CCF-A会议/ML顶会] 第一作者为联合指导的博士生</font> </b>
+        </span></li>
+        
+
+
+        <li><span> Xingyu Zhao, Yuexuan An, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Xin Geng<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>.  
+            <a>Scalable Label Distribution Learning for Multi-Label Classification. </a>
+             IEEE Transactions on Neural Networks and Learning Systems (<b>IEEE TNNLS</b>), 2024. 
+            <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊] 第一作者为联合指导的博士生</font> </b>
+        </li>
+
+        <li><span> <b>Lei Qi</b>, Dongjia Zhao, Yinghuan Shi, Xin Geng.
+            <a>Patch-aware Batch Normalization for Improving Cross-domain Robustness. </a>
+        IEEE Transactions on Circuits and Systems for Video Technology (<b>IEEE TCSVT</b>), 2024.
+       <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊]</font> </b>
+        </span></li>
+        
+
+        <li><span> Yunlong Tang, Yuxuan Wan, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Xin Geng<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>.
+            <a>DPStyler: Dynamic PromptStyler for Source-Free Domain Generalization. </a>
+        IEEE Transactions on Multimedia (<b>IEEE TMM</b>), 2024.
+        <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊] 第一作者为联合指导的硕士生</font> </b>
+        </span></li>
+    
+
+        <li><span> Dongjia Zhao, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Xiao Shi, Yinghuan Shi, Xin Geng.
+            <a>A Novel Cross-Perturbation for Single Domain Generalization. </a>
+        IEEE Transactions on Circuits and Systems for Video Technology (<b>IEEE TCSVT</b>), 2024.
+                <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊] 第一作者为指导的硕士生</font> </b>
+        </span></li>
+
+
+        <li><span> Jiajun Hu, Jian Zhang, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yinghuan Shi<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yang Gao. 
+            <a>Learn to Preserve and Diversify: Parameter-Efficient Group with Orthogonal Regularization for Domain Generalization. </a>
+        European Conference on Computer Vision (<b>ECCV</b>), 2024. 
+                <b><font color="#FF0000">[CCF-B会议/CV顶会] 第一作者为联合指导的硕士生</font> </b>
+        </span></li>
+
+
+        <li><span> <b>Lei Qi</b>, Ziang Liu, Yinghuan Shi, Xin Geng.
+            <a>Generalizable Metric Network for Cross-domain Person Re-identification. </a>
+        IEEE Transactions on Circuits and Systems for Video Technology (<b>IEEE TCSVT</b>), 2024.
+        <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊]</font> </b>
+        </span></li>
+    
+
+
+         <li> <b>Lei Qi</b>, Hongpeng Yang, Yinghuan Shi, Xin Geng.
+             <a>MultiMatch: Multi-task Learning for Semi-supervised Domain Generalization. </a>
+             ACM Transactions on Multimedia Computing Communications and Application (<b>ACM TOMM</b>), 2024. 
+             <b><font color="#FF0000">[CCF-B期刊/ACM汇刊]</font> </b>
+        </li>
+
+        <li><span> <b>Lei Qi</b>, Hongpeng Yang, Yinghuan Shi, Xin Geng.
+            <a>NormAUG: Normalization-guided Augmentation for Domain Generalization. </a>
+             IEEE Transactions on Image Processing  (<b>IEEE TIP</b>), 2024.
+             <b><font color="#FF0000">[CCF-A期刊/IEEE汇刊]</font> </b>
+        </span></li>
+    
+
+
+        <li><span> Na Wang<sup>*</sup>, <b>Lei Qi</b><sup>*</sup>, Jintao Guo, Yinghuan Shi, Yang Gao.
+            <a>Learning Generalizable Models via Disentangling Spurious and Enhancing Potential Correlations. </a>
+             IEEE Transactions on Image Processing  (<b>IEEE TIP</b>), 2023.
+             <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊] 第一作者为联合指导的硕士生</font> </b>
+        </span></li>
+    
+
+        <li><span><b>Lei Qi</b>, Zihao Ren, Junxi Liu, Xin Geng.
+            <a>Person Re-identification Method Based on Hybrid Real-Synthetic Data. </a>
+        Journal of Computer Research and Development (<b>计算机研究与发展</b>), 2023. 
+           <b><font color="#FF0000">[CCF-T1期刊]</font> </b>
+        </span></li>
+    
+
+        <li><span> <b>Lei Qi</b>, Peng Dong, Tan Xiong, Hui Xue, Xin Geng.
+            <a>DoubleAUG: Single-domain Generalized Object Detector in Urban via Color Perturbation and Dual-style Memory. </a>
+             ACM Transactions on Multimedia Computing Communications and Application (<b>ACM TOMM</b>), 2023. 
+             <b><font color="#FF0000">[CCF-B期刊/ACM汇刊]</font> </b>
+        </span></li>
+    
+
+        <li><span> Xingyu Zhao, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yuexuan An, Xin Geng<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>.  
+            <a>Generalizable Label Distribution Learning. </a>
+         ACM International Conference on Multimedia (<b>MM</b>), 2023. 
+           <b><font color="#FF0000">[CCF-A会议] 第一作者为联合指导的博士生</font> </b>
+        </span></li>
+    
+
+        <li><span> Jian Zhang, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yinghuan Shi<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yang Gao. 
+            <a>DomainAdaptor: A Novel Approach to Test-time Adaptation. </a>
+         IEEE International Conference on Computer Vision (<b>ICCV</b>), 2023. 
+           <b><font color="#FF0000">[CCF-A会议/CV顶会] 第一作者为联合指导的博士生</font> </b>
+        </span></li>
+    
+
+        <li><span> Jintao Guo, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yinghuan Shi<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>. 
+            <a>DomainDrop: Suppressing Domain-Sensitive Channels for Domain Generalization. </a>
+         IEEE International Conference on Computer Vision (<b>ICCV</b>), 2023. 
+          <b><font color="#FF0000">[CCF-A会议/CV顶会] 第一作者为联合指导的博士生</font> </b>
+        </span></li>
+        
+
+        <li><span> Jiajun Hu<sup>*</sup>, <b>Lei Qi</b><sup>*</sup>, Jian Zhang, Yinghuan Shi.
+            <a>Domain generalization via Inter-domain Alignment and Intra-domain Expansion. </a>
+             Pattern Recognition (<b>PR</b>), 2023.
+              <b><font color="#FF0000">[CCF-B期刊/模式识别领域旗舰期刊] 第一作者为联合指导的硕士生</font> </b>
+        </span></li>
+
+
+        <li><span> Jintao Guo,  <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yinghuan Shi<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yang Gao.
+            <a>PLACE dropout: A Progressive Layer-wise and Channel-wise Dropout for Domain Generalization. </a>
+             ACM Transactions on Multimedia Computing Communications and Application (<b>ACM TOMM</b>), 2023. 
+              <b><font color="#FF0000">[CCF-B期刊/ACM汇刊] 第一作者为联合指导的博士生</font> </b>
+        </span></li>
+
+
+        <li><span> <b>Lei Qi</b>, Jiaqi Liu, Lei Wang, Yinghuan Shi, Xin Geng. 
+            <a>Unsupervised Generalizable Multi-source Person Re-identification: A Domain-specific Adaptive Framework. </a>
+             Pattern Recognition (<b>PR</b>), 2023.
+                  <b><font color="#FF0000">[CCF-B期刊/模式识别领域旗舰期刊]</font> </b>
+        </span></li>
+    
+
+        <li><span> Jintao Guo, Na Wang, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yinghuan Shi<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>. 
+            <a>ALOFT: A Lightweight MLP-like Architecture with Dynamic Low-Frequency Transform for Domain Generalization. </a>
+         IEEE Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>), 2023. 
+           <b><font color="#FF0000">[CCF-A会议/CV顶会] 第一作者为联合指导的博士生</font> </b>
+        </span></li>
+    
+
+        <li><span> Lihe Yang, <b>Lei Qi</b>, Litong Feng, Wayne Zhang, Yinghuan Shi. 
+            <a>Revisiting Weak-to-Strong Consistency in Semi-Supervised Semantic Segmentation. </a>
+         IEEE Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>), 2023. 
+           <b><font color="#FF0000">[CCF-A会议/CV顶会] 第一作者为联合指导的硕士生</font> </b>
+        </span></li>
+    
+
+
+        <li><span> <b>Lei Qi</b>, Jiaying Shen, Jiaqi Liu, Yinghuan Shi, Xin Geng.
+            <a>Label Distribution Learning for Generalizable Multi-source Person Re-identification. </a>
+        IEEE Transactions on Information Forensics and Security (<b>IEEE TIFS</b>), 2022.
+           <b><font color="#FF0000">[CCF-A期刊/IEEE汇刊]</font> </b>
+        </span></li>
+
+
+
+        <li><span> Ruiqi Wang<sup>*</sup>, <b>Lei Qi</b><sup>*</sup>, Yinghuan Shi, Yang Gao.
+            <a>Better Pseudo-label: Joint Domain-aware Label and Dual-classifier for Semi-supervised Domain Generalization. </a>
+        Pattern Recognition (<b>PR</b>), 2022.
+         <b><font color="#FF0000">[CCF-B期刊/模式识别领域旗舰期刊] 第一作者为联合指导的硕士生</font> </b>
+        </span></li>
+        
+
+        <li><span> <b>Lei Qi</b>, Lei Wang, Yinghuan Shi, Xin Geng.
+            <a>A Novel Mix-normalization Method for Generalizable Multi-source Person Re-identification. </a>
+        IEEE Transactions on Multimedia (<b>IEEE TMM</b>), 2022.
+           <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊]</font> </b>
+        </span></li>
+        
+
+
+        <li><span> Yue Wang<sup>*</sup>, <b>Lei Qi</b><sup>*</sup>, Yinghuan Shi, Yang Gao.
+            <a>Feature-based Style Randomization for Domain Generalization. </a>
+        IEEE Transactions on Circuits and Systems for Video Technology (<b>IEEE TCSVT</b>), 2022.
+         <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊] 第一作者为联合指导的硕士生</font> </b>
+        </span></li>
+        
+
+        <li><span> Jian Zhang, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>,  Yinghuan Shi<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yang Gao. 
+            <a>MVDG: A Unified Multi-view Framework for Domain Generalization. </a>
+        European Conference on Computer Vision (<b>ECCV</b>), 2022. 
+          <b><font color="#FF0000">[CCF-B会议/CV顶会] 第一作者为联合指导的博士生</font> </b>
+        </span></li>
+        
+
+        <li><span> Ziqi Zhou, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yinghuan Shi<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>. 
+            <a>Generalizable Medical Image Segmentation via Random Amplitude Mixup and Domain-Specific Image Restoration. </a>
+        European Conference on Computer Vision (<b>ECCV</b>), 2022. 
+           <b><font color="#FF0000">[CCF-B会议/CV顶会] 第一作者为联合指导的硕士生</font> </b>
+        </span></li>
+        
+
+        <li><span> Jian Zhang, <b>Lei Qi</b><img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yinghuan Shi<img src="./lei_qi_files/email_icon.png" alt="Corresponding Author" class="corresponding-author-image"/>, Yang Gao.
+            <a>Generalizable Model-agnostic Semantic Segmentation via Target-specific Normalization. </a>
+        Pattern Recognition (<b>PR</b>), 2021.
+         <b><font color="#FF0000">[CCF-B期刊/模式识别领域旗舰期刊] 第一作者为联合指导的博士生</font> </b>
+        </span></li>
+        
+
+        <li><span> Xiaoting Han<sup>*</sup>, <b>Lei Qi</b><sup>*</sup>, Qian Yu, Ziqi Zhou, Yefeng Zheng, Yinghuan Shi, Yang Gao.
+            <a>Deep Symmetric Adaptation Network for Cross-modality Medical Image Segmentation. </a>
+        IEEE Transactions on Medical Imaging (<b>IEEE TMI</b>), 2021.
+         <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊] 第一作者为联合指导的硕士生</font> </b>
+        </span></li>
+        
+
+        <li><span> <b>Lei Qi</b>, Lei Wang, Jing Huo, Yinghuan Shi, Xin Geng, Yang Gao.
+            <a>Adversarial Camera Alignment Network for Unsupervised Cross-camera Person Re-identification. </a>
+        IEEE Transactions on Circuits and Systems for Video Technology (<b>IEEE TCSVT</b>), 2021.
+        <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊]</font> </b>
+        </span></li>
+        
+
+        <li><span> <b>Lei Qi</b>, Lei Wang, Jing Huo, Yinghuan Shi, Yang Gao.
+            <a>GreyReID: A Two-stream Deep Framework with RGB-grey Information for Person Re-identification. </a>
+        ACM Transactions on Multimedia Computing Communications and Application (<b>ACM TOMM</b>), 2020. 
+                 <b><font color="#FF0000">[CCF-B期刊/ACM汇刊]</font> </b>
+        </span></li>
+        
+
+        <li><span><b>Lei Qi</b>, Peize Yu, Yang Gao.
+            <a>Research on Weak-Supervised Person Re-Identification. </a>
+        Journal of Software (<b>软件学报</b>), 2020. 
+        <b><font color="#FF0000">[CCF-T1期刊]</font> </b>
+        </span></li>
+        
+
+        <li><span> <b>Lei Qi</b>, Lei Wang, Jing Huo, Yinghuan Shi, Yang Gao.
+            <a>Progressive Cross-camera Soft-label Learning for Semi-supervised Person Re-identification. </a>
+        IEEE Transactions on Circuits and Systems for Video Technology (<b>IEEE TCSVT</b>), 2020.
+           <b><font color="#FF0000">[CCF-B期刊/IEEE汇刊]</font> </b>
+        </span></li>
+        
+
+        <li><span> <b>Lei Qi</b>, Lei Wang, Jing Huo, Luping Zhou, Yinghuan Shi, Yang Gao.  
+            <a>A Novel Unsupervised Camera-aware Domain Adaptation Framework for Person Re-identification. </a>
+        IEEE International Conference on Computer Vision (<b>ICCV</b>), 2019. 
+           <b><font color="#FF0000">[CCF-A会议/CV顶会]</font> </b>
+        </span></li>
+
+</ul>
+      </div>
+</font>
+         
+    </div>
+  </section>
+ 
+ 
+
+<section id="teaching">
+    <h2>Teaching</h2>
+    <div class="section-content">
+      <div class="justified-text">
+        <ul style="padding-left: 20px; margin-top: 10px;">
+          <li> 
+            <span class="course-title" style="font-weight: bold;">Artificial Intelligence (人工智能)</span> 
+            - 
+            <span class="course-semester" style="color: #666;">Fall 2025</span>
+          </li>
+          </ul>
+      </div>
+    </div>
+</section>
+
+<section id="graduate">
+    <h2>毕业生去向</h2>
+    <div class="section-content">
+      <p style="color: #14213d;"> 东南大学硕士毕业生（包括联合指导的学生） </p>
+      <div class="justified-text">
+        <ul style="padding-left: 20px; margin-top: 10px;">
+          <li> 
+            <span class="course-title" style="font-weight: bold;">2025</span> 
+            ：
+            <span class="course-semester" style="color: #666;">董鹏（理想汽车）、赵烨程（选调）、赵懂佳（小红书，国奖）、赵华众（电信，国奖）、李成浩（电网）、唐云龙（字节）、徐义格（美团） </span>
+          </li>
+           <li> 
+            <span class="course-title" style="font-weight: bold;">2024</span> 
+            ：
+            <span class="course-semester" style="color: #666;">
+            万宇轩（北大读博）、刘家奇（寒武纪）、疏越（西艾爱）、高明（定向）、阳鸿鹏（电网）、刘子昂（农业银行） </span>
+          </li>
+             <li> 
+            <span class="course-title" style="font-weight: bold;">2023</span> 
+            ：
+            <span class="course-semester" style="color: #666;">
+            沈珈莹（公务员，国奖）、刘俊汐（微软）、熊坦（选调）、梅涛（华为） </span>
+          </li>
+            </li>
+             <li> 
+            <span class="course-title" style="font-weight: bold;">2022</span> 
+            ：
+            <span class="course-semester" style="color: #666;">
+            宋馨雅（华为）、刘茂林（商汤）、付坤（定向） </span>
+          </li>
+          </ul>
+      </div>
+    </div>
+</section>
+</main>
+<footer>
+  <p>© Lei Qi | Southeast University (SEU), Jiulonghu Campus</p>
+</footer>
+<script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // Add some offset to account for the fixed navigation bar
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+  </div>
+</body>
+</html>
